@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
       
-        rb.velocity = Vector3.left * speed;
+        
     }
 
     void OnTriggerEnter(Collider other)
@@ -21,9 +21,10 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             FindObjectOfType<Gamemanager>().OnPlayerHit();
+            Destroy(gameObject);
         }
 
-        Destroy(gameObject);
+        
     }
 }
 
