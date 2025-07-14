@@ -6,6 +6,13 @@ using UnityEngine.UI;
 
 public class Gamemanager : MonoBehaviour
 {
+    public Transform[] leftTargets;
+    public Transform[] rightTargets;
+
+    public Playercontroller eraserman;
+
+    private int currentRow = 0;
+    private bool hasJumped = false;
 
     public int lives = 3;
 
@@ -22,7 +29,7 @@ public class Gamemanager : MonoBehaviour
         if (lives <= 0)
         {
             Debug.Log("Game Over!");
-            // You can add a Game Over screen here later
+            //add a Game Over screen here later
         }
     }
 
@@ -32,15 +39,49 @@ public class Gamemanager : MonoBehaviour
         if (lives <= 1) heart2.enabled = false;
         if (lives <= 0) heart1.enabled = false;
     }
-    // Start is called before the first frame update
     void Start()
     {
-        
+        StartTurn();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartTurn()
     {
-        
+        hasJumped = false;
     }
+
+    public void JumpLeft()
+    {
+        if (hasJumped || currentRow >= leftTargets.Length) return;
+
+        Vector3 jumpTarget = leftTargets[currentRow].position + Vector3.up * 0.5f;
+        eraserman.JumpTarget(jumpTarget);
+
+        hasJumped = true;
+        currentRow++;
+
+
+        StartCoroutine(JumpAgain());
+    }
+
+    public void JumpRight()
+    {
+        if (hasJumped || currentRow >= rightTargets.Length) return;
+
+        Vector3 jumpTarget = rightTargets[currentRow].position + Vector3.up * 0.5f;
+        eraserman.JumpTarget(jumpTarget);
+
+        hasJumped = true;
+        currentRow++;
+
+        StartCoroutine(JumpAgain());
+    }
+
+
+
+    private IEnumerator JumpAgain()
+    {
+        yield return new WaitForSeconds(1f); 
+        hasJumped = false;
+    }
+
 }

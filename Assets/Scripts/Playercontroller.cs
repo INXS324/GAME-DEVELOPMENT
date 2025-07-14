@@ -3,38 +3,27 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+
+
+public class Playercontroller : MonoBehaviour
 {
-    public float jumpSpeed = 5f;
-    private bool IsMoving = false;
-    private Vector3 targetposition;
+    public float jumpForce = 10f;
 
+    private Rigidbody rb;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void JumpTarget(Vector3 targetPosition)
     {
-        if (IsMoving)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetposition, jumpSpeed * Time.deltaTime);
-            if (Vector3.Distance(transform.position, targetposition) < 0.02f)
-            {
-                IsMoving = false;
-            }
-        }
+        Vector3 direction = (targetPosition - transform.position).normalized;
+        rb.velocity = direction * jumpForce;
     }
 
-    public void Jump(Vector3 newposition)
-    {
-        if (! IsMoving)
-        {
-            targetposition = newposition;
-            IsMoving = true;
-        }
-    }
+   
+
+
+
 }
