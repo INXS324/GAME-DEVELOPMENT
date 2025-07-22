@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class EnemyShooter : MonoBehaviour
@@ -9,37 +10,35 @@ public class EnemyShooter : MonoBehaviour
     public Transform LeftBullet;
     public Transform RightBullet;
 
-    private bool shoot = false;
+
     private Transform BulletSpawn;
 
     public float shootForce = 2000f;
 
-    private void Update()
+    
+
+    public void FireBullet()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            BulletSpawnPos(); 
-            shoot = true;     
-        }
-    }
 
-    private void FixedUpdate()
-    {
-        if (shoot == true)
-        {
-            
-            GameObject Bullet = Instantiate(
-                BulletPrefab,
-                BulletSpawn.position,
-                BulletSpawn.rotation
-            );
+        BulletSpawnPos();
+        GameObject Bullet = Instantiate(
+               BulletPrefab,
+               BulletSpawn.position,
+               BulletSpawn.rotation
+           );
 
-            
-            Rigidbody rb = Bullet.GetComponent<Rigidbody>();
-            rb.AddRelativeForce(Vector3.left * shootForce);
 
-            shoot = false;
-        }
+        Rigidbody rb = Bullet.GetComponent<Rigidbody>();
+        rb.AddRelativeForce(Vector3.left * shootForce);
+
+
+
+
+
+
+
+
+
     }
 
     void BulletSpawnPos()

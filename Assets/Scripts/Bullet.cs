@@ -22,9 +22,17 @@ public class Bullet : MonoBehaviour
         {
             FindObjectOfType<Gamemanager>().OnPlayerHit();
             Destroy(gameObject);
+
+            FindObjectOfType<Gamemanager>().BulletFinished();
         }
 
         
+    }
+
+    private void OnBecameInvisible()
+    {
+        FindObjectOfType<Gamemanager>().BulletFinished();
+        Destroy(gameObject);
     }
 }
 
