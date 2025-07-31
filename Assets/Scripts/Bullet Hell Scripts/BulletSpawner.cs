@@ -13,7 +13,7 @@ public class BulletSpawner : MonoBehaviour
     public TMP_Text Timer;
     private float timer;
     private bool timerON = false;
-    public bool bluecolor = false;
+  
 
     public TMP_Text Move;
     public TMP_Text Laugh;
@@ -66,7 +66,7 @@ public class BulletSpawner : MonoBehaviour
         Timer.text = displayTime.ToString();
     }
 
-    void FireBullet(Transform spawnpoint, Vector2 Direction, float startSpeed, float maxSpeed, float delay)
+    void FireBullet(Transform spawnpoint, Vector2 Direction, float startSpeed, float maxSpeed, float delay, bool color = false)
     {
         GameObject bullet = Instantiate(
             BulletPrefab,
@@ -85,10 +85,10 @@ public class BulletSpawner : MonoBehaviour
         bulletScript.maxspeed = maxSpeed;
         bulletScript.delay = delay;
 
-        if (bluecolor)
+        if (color)
         {
             SpriteRenderer sp = bullet.GetComponent<SpriteRenderer>();
-            sp.color = Color.blue;
+            sp.color = Color.cyan;
         }
 
 
@@ -123,6 +123,10 @@ public class BulletSpawner : MonoBehaviour
         Laugh.gameObject.SetActive(false);
         Laugh2.gameObject.SetActive(false);
         Idiot.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.4f);
+        yield return Wave8();
+        yield return new WaitForSeconds(1.5f);
+        yield return Wave9();
 
 
 
@@ -191,13 +195,12 @@ public class BulletSpawner : MonoBehaviour
     IEnumerator Wave5()
     {
 
-        bluecolor = true;
+       
         for (int i = 7; i <= 11; i++)
         {
-            FireBullet(spawnpoints[i], W, 0.5f, 8f, 1.5f);
+            FireBullet(spawnpoints[i], W, 0.5f, 8f, 1.5f, true);
         }
 
-        bluecolor = false;
 
         yield return null;
     }
@@ -327,11 +330,166 @@ public class BulletSpawner : MonoBehaviour
         }
     }
 
+    IEnumerator Wave8()
+    {
+        //StartCoroutine(Layer1());
+        StartCoroutine(Layer2());
+        StartCoroutine(Layer3());
+        //StartCoroutine(Layer4());
+        //StartCoroutine(Layer5());
+        //StartCoroutine(Layer6());
+        //StartCoroutine(Layer7());
+        //StartCoroutine(Layer8());
+        StartCoroutine(Layer9());
+        StartCoroutine(Layer10());
+        //StartCoroutine(Layer11());
+        //StartCoroutine(Layer12());
+        //StartCoroutine(Layer13());
+        //StartCoroutine(Layer14());
+        yield return null;
+       
+
+    }
+
+    IEnumerator Layer1()
+    {
+        for (int i = 0; i <= 50; i++)
+        {
+            FireBullet(spawnpoints[0], E, 8f, 8f, 0f);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    IEnumerator Layer2()
+    {
+        for (int i = 0; i <= 500; i++)
+        {
+            FireBullet(spawnpoints[1], E, 8f, 8f, 0f);
+            //yield return new WaitForSeconds(0.2f);
+            yield return null;
+        }
+    }
+
+    IEnumerator Layer3()
+    {
+        for (int i = 0; i <= 500; i++)
+        {
+            FireBullet(spawnpoints[12], W , 8f, 8f, 0f);
+            //yield return new WaitForSeconds(0.2f);
+            yield return null;
+        }
+    }
+
+    IEnumerator Layer4()
+    {
+        for (int i = 0; i <= 50; i++)
+        {
+            FireBullet(spawnpoints[13], W, 8f, 8f, 0f);
+            yield return new WaitForSeconds(0.2f);
+        }
+
+    }
+
+    IEnumerator Layer5()
+    {
+        for (int i = 0; i <= 50; i++)
+        {
+            FireBullet(spawnpoints[27], S, 8f, 8f, 0f);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    IEnumerator Layer6()
+    {
+        for (int i = 0; i <= 50; i++)
+        {
+            FireBullet(spawnpoints[28], S, 8f, 8f, 0f);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
     
+    IEnumerator Layer7()
+    {
+        for (int i = 0; i <= 50; i++)
+        {
+            FireBullet(spawnpoints[29], S, 8f, 8f, 0f);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
 
+    IEnumerator Layer8()
+    {
+        for (int i = 0; i <= 50; i++)
+        {
+            FireBullet(spawnpoints[30], S, 8f, 8f, 0f);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
 
+    IEnumerator Layer9()
+    {
+        for (int i = 0; i <= 500; i++)
+        {
+            FireBullet(spawnpoints[31], S, 8f, 8f, 0f);
+            //yield return new WaitForSeconds(0.2f);
+            yield return null;
+        }
+    }
+
+    IEnumerator Layer10()
+    {
+        for (int i = 0; i <= 500; i++)
+        {
+            FireBullet(spawnpoints[22], N, 8f, 8f, 0f);
+            //yield return new WaitForSeconds(0.2f);
+            yield return null;
+        }
+    }
+
+    IEnumerator Layer11()
+    {
+        for (int i = 0; i <= 50; i++)
+        {
+            FireBullet(spawnpoints[23], N, 8f, 8f, 0f);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    IEnumerator Layer12()
+    {
+        for (int i = 0; i <= 50; i++)
+        {
+            FireBullet(spawnpoints[24], N, 8f, 8f, 0f);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    IEnumerator Layer13()
+    {
+        for (int i = 0; i <= 50; i++)
+        {
+            FireBullet(spawnpoints[25], N, 8f, 8f, 0f);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    IEnumerator Layer14()
+    {
+        for (int i = 0; i <= 50; i++)
+        {
+            FireBullet(spawnpoints[26], N, 8f, 8f, 0f);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    IEnumerator Wave9()
+    {
+       
+        FireBullet(spawnpoints[21], N, 1f, 8f, 1.5f, true);
+        yield return new WaitForSeconds(1f);
+        FireBullet(spawnpoints[9], W, 0.5f, 12f, 1.3f, true);
         
-
+    }
 
 
 
