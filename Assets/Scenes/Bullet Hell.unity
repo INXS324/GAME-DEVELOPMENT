@@ -301,7 +301,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 500, y: 142}
+  m_AnchoredPosition: {x: 987, y: 402}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &66278834
@@ -472,7 +472,6 @@ MonoBehaviour:
   - {fileID: 2137032456}
   - {fileID: 1853732754}
   Timer: {fileID: 66278834}
-  bluecolor: 0
   Move: {fileID: 1951511423}
   Laugh: {fileID: 613753180}
   Laugh2: {fileID: 546607318}
